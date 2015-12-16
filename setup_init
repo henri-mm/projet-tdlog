@@ -10,3 +10,7 @@ sudo -E npm install -g phonegap
 
 sudo -E apt-get install python
 sudo -E apt-get install python-django
+
+sudo -E npm install -g bplist-parser
+sudo -E npm install -g path-is-absolute
+sudo -E npm install -g inflight
