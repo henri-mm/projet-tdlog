@@ -1,12 +1,12 @@
-sudo apt-get update
-sudo apt-get upgrade
+sudo -E apt-get update
+sudo -E apt-get upgrade
 
-sudo apt-get install git
-sudo apt-get install npm
-sudo apt-get install nodejs-legacy
+sudo -E apt-get install git
+sudo -E apt-get install npm
+sudo -E apt-get install nodejs-legacy
 
-sudo npm install -g cordova
-sudo npm install -g phonegap
+sudo -E npm install -g cordova
+sudo -E npm install -g phonegap
 
-sudo apt-get install python
-sudo apt-get install python-django
+sudo -E apt-get install python
+sudo -E apt-get install python-django
