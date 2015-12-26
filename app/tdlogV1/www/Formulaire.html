@@ -6,7 +6,7 @@
 
         <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="css/style_formulaire.css" />
 
         <title>Formulaire</title>
 
@@ -15,17 +15,31 @@
 
     <body>
 
-        <form method="post" action="traitement.php">
+        <form method="post" action="traitement.php"> <!-- remplir le bon nom du fichier-->
 		<p>
-			<label for="pseudo">Votre pseudo:</label>
-			<input type="text" name="pseudo" id="pseudo" />
-
+			<label for="pseudoemprunteur">Pseudo de l'emprunteur:</label> <!-- à préremplir avec les infos remplies à la connexion. Comment faire? A adapter selon si on appuie sur préter ou emprunter. aucune idée comment faire ca pour l'instant -->
+			<input type="text" name="pseudoemprunteur" id="pseudoemprunteur" />
 			<br />
-			<label for="motdepasse">Votre mot de passe:</label>
-			<input type="password" name="motdepasse" id="motdepasse" />
+			<label for="assoemprunteur">Asso/Club de l'emprunteur:</label> 
+			<input type="text" name="assoemprunteur" id="assoemprunteur" />
 			<br />
-			<label for="date">Votre mot de passe:</label>
-			<input type="date" name="date" id="date" />
+			<label for="pseudopreteur">Pseudo du preteur:</label> 
+			<input type="text" name="pseudopreteur" id="pseudopreteur" />
+			<br />
+			<label for="assopreteur">Asso du preteur:</label> 
+			<input type="text" name="assopreteur" id="assopreteur" />
+			<br />
+			<label for="objet">Objet emprunté:</label> <!-- à préremplir avec l'objet sélectionné à la page précédente en cas d'emprunt et laisser libre en cas de prêt. Comment faire? -->
+			<input type="text" name="objet" id="objet" />
+			<br />
+			<label for="datepret">Date d'emprunt:</label>
+			<input type="date" name="datepret" id="datepret" />
+			<br />
+			<label for="dateretour">Date de retour:</label>
+			<input type="date" name="dateretour" id="dateretour" /> <!-- à préremplir avec la date d'emprunt augmentée de 7 jours -->
+		</p>
+		<p>
+			<input href="page_fin.html" type="submit" value="Valider" />
 		</p>
 	</form>
 
