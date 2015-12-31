@@ -20,6 +20,7 @@
 
         <form method="post" action="traitement.php"> <!-- remplir le bon nom du fichier-->
 		<p>
+			<div id = "conexion">
 			<label for="pseudo">Votre pseudo:</label>
 			<input type="text" name="pseudo" id="pseudo" required />
 
@@ -27,7 +28,10 @@
 			<label for="motdepasse">Votre mot de passe:</label>
 			<input type="password" name="motdepasse" id="motdepasse" required/>
 			<br />
-			<input href="choix_preter_emprunter.html" type="submit" value="Se connecter" /> <!-- à changer: il faut mettre un critère de vérification avec la base de données -->	
+		</p>
+		<p>
+			</div>
+			<input href="choix_preter_emprunter.html" type="submit" value="Se connecter" id= bouton /> <!-- à changer: il faut mettre un critère de vérification avec la base de données -->	
 		</p>
 	</form>
 
