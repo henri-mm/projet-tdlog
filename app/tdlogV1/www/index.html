@@ -6,7 +6,7 @@
 
         <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style_connexion.css" />
+        <link rel="stylesheet" href="css/style.css" />
 
         <title>Connexion</title>
 
@@ -16,22 +16,23 @@
     <body>
 	<div id="bloc_page">
 
-        <h1>Bienvenue sur Pontériel!!</h1>
+        <h1>Bienvenue sur Pontériel !</h1>
 
         <form method="post" action="traitement.php"> <!-- remplir le bon nom du fichier-->
 		<p>
-			<div id = "conexion">
-			<label for="pseudo">Votre pseudo:</label>
+	
+			<label for="pseudo">Pseudo :</label>
 			<input type="text" name="pseudo" id="pseudo" required />
 
-			<br />
-			<label for="motdepasse">Votre mot de passe:</label>
+			<br/>
+
+			<label for="motdepasse">Votre mot de passe :</label>
 			<input type="password" name="motdepasse" id="motdepasse" required/>
-			<br />
+			
 		</p>
-		<p>
-			</div>
-			<input href="choix_preter_emprunter.html" type="submit" value="Se connecter" id= bouton /> <!-- à changer: il faut mettre un critère de vérification avec la base de données -->	
+
+		<p>	
+			<input href="choix_preter_emprunter.html" type="submit" value="Se connecter" class= bouton /> <!-- à changer: il faut mettre un critère de vérification avec la base de données -->	
 		</p>
 	</form>
 

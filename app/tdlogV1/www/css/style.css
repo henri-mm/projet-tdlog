@@ -1,2 +1,33 @@
-h1 {
-	font-family:
+h1
+{
+	font-family: Calibri, Arial, sans-serif;
+	color:red;
+	text-align: center;
+}
+
+h2
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-style: italic;
+	color: blue;
+	text-align: center;
+}
+
+p
+{
+	text-align: center;
+}
+
+
+#connexion /* ca serait cool de pouvoir le faire correctement mais j'ai pas trouvé comment faire encore*/
+{
+	text-align: left;
+}
+
+.bouton 
+{
+	border: 3px;
+	background:red;
+	color: white;
+	text-align: center;
+}

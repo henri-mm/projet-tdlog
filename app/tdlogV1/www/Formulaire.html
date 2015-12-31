@@ -6,7 +6,7 @@
 
         <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style_formulaire.css" />
+        <link rel="stylesheet" href="css/style.css" />
 
         <title>Formulaire</title>
 
@@ -16,6 +16,10 @@
     <body>
 
         <form method="post" action="traitement.php"> <!-- remplir le bon nom du fichier-->
+		<h1> Prêter/Emprunter du matériel </h1>
+
+		<h2> Veillez remplir les informations suivantes : </h2>
+
 		<p>
 			<label for="pseudoemprunteur">Pseudo de l'emprunteur:</label> <!-- à préremplir avec les infos remplies à la connexion. Comment faire? A adapter selon si on appuie sur préter ou emprunter. aucune idée comment faire ca pour l'instant -->
 			<input type="text" name="pseudoemprunteur" id="pseudoemprunteur" />
@@ -40,7 +44,7 @@
 			<input type="date" name="dateretour" id="dateretour" /> <!-- à préremplir avec la date d'emprunt augmentée de 7 jours -->
 		</p>
 		<p>
-			<input href="page_fin.html" type="submit" value="Valider" />
+			<input href="page_fin.html" type="submit" value="Valider" class = bouton />
 
 		</p>
 	</form>
