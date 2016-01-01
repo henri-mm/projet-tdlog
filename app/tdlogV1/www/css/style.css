@@ -1,22 +1,28 @@
+body
+{
+	background-image: url("fondecran.jpg");
+
+}
+
+body
+{
+	text-align: center;
+
+}
+
 h1
 {
 	font-family: Calibri, Arial, sans-serif;
-	color:red;
-	text-align: center;
+	font-size: 40px;
+	color:orange;
 }
 
 h2
 {
 	font-family: Calibri, Arial, sans-serif;
 	font-style: italic;
-	color: blue;
-	text-align: center;
 }
 
-p
-{
-	text-align: center;
-}
 
 
 #connexion /* ca serait cool de pouvoir le faire correctement mais j'ai pas trouvé comment faire encore*/
@@ -24,10 +30,15 @@ p
 	text-align: left;
 }
 
-.bouton 
+.bouton
 {
-	border: 3px;
-	background:red;
-	color: white;
+	width:150px;
+	line-height:40px;
+	text-align:center;
+	vertical-align:middle;
+	font-size: 16px;
+	border-radius: 12px;
+	background: orange;
 	text-align: center;
+	text-decoration: none;
 }
