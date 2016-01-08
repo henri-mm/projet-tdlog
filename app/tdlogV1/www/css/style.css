@@ -1,13 +1,7 @@
 body
 {
 	background-image: url("../img/fondecran.jpg");
-
-}
-
-body
-{
 	text-align: center;
-
 }
 
 h1
@@ -23,22 +17,13 @@ h2
 	font-style: italic;
 }
 
-
-
-#connexion /* ca serait cool de pouvoir le faire correctement mais j'ai pas trouvé comment faire encore*/
+.bouton, a
 {
-	text-align: left;
-}
-
-.bouton
-{
-	width:150px;
-	line-height:40px;
-	text-align:center;
+	text-decoration: none;
 	vertical-align:middle;
 	font-size: 16px;
-	border-radius: 12px;
+	color: purple;
+	border-radius:12px;
 	background: orange;
-	text-align: center;
-	text-decoration: none;
+	border-width:0px;
 }
