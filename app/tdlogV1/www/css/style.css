@@ -1,2 +1,31 @@
-h1 {
-	font-family:
+body
+{
+	background-image: url("../img/fondecran.jpg");
+	text-align: center;
+}
+
+h1
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: 40px;
+	color:orange;
+}
+
+h2
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-style: italic;
+}
+
+.bouton, a
+{
+	text-decoration: none;
+	vertical-align:middle;
+	font-size: 16px;
+	color: purple;
+	border-radius:12px;
+	background: orange;
+	border-width:0px;
+}
+
+
