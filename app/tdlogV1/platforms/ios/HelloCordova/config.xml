@@ -16,15 +16,14 @@
     </feature>
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
-    <name>Pontériel</name>
+    <name>HelloCordova</name>
     <description>
-        Application crée par des élèves des Ponts qui permet de gérer le stock des assocations
+        A sample Apache Cordova application that responds to the deviceready event.
     </description>
     <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Maël Demortier, Henri Maz-Mézéran, Aude Mulard, Caroline Devaux
+        Apache Cordova Team
     </author>
-    <content src="Connexion.html" />
-    <icon src="www/logoappli.png" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
