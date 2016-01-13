@@ -1,15 +1,14 @@
 body
 {
-	background-image: url("../img/fondecran.jpg");
+	background-image: url("../img/fond_ecran.jpg");
 	text-align: center;
-	color:white;
 }
 
 h1
 {
 	font-family: Calibri, Arial, sans-serif;
 	font-size: 40px;
-	color:white;
+	color:blue;
 }
 
 h2
@@ -29,12 +28,14 @@ h2
 	border-width:0px;
 }
 
+
 input
 {
 	vertical-align:middle;
 }
+
 .logo
 {
-	width: 13em;
-	height: 13em;
+	width: 8em;
+	height: 8em;
 }
