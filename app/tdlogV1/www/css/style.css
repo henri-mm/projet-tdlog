@@ -1,6 +1,6 @@
 body
 {
-	background-image: url("../img/fondecran.jpg");
+	background-image: url("../img/fond_ecran.jpg");
 	text-align: center;
 }
 
@@ -8,7 +8,7 @@ h1
 {
 	font-family: Calibri, Arial, sans-serif;
 	font-size: 40px;
-	color:orange;
+	color:blue;
 }
 
 h2
@@ -22,8 +22,20 @@ h2
 	text-decoration: none;
 	vertical-align:middle;
 	font-size: 16px;
-	color: purple;
+	color: white;
 	border-radius:12px;
-	background: orange;
+	background: blue;
 	border-width:0px;
+}
+
+
+input
+{
+	vertical-align:middle;
+}
+
+.logo
+{
+	width: 8em;
+	height: 8em;
 }
