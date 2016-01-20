@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import datetime
 
 # Create your models here.
 
@@ -6,7 +7,7 @@ class Personne(models.Model):
     nom = models.CharField(max_length=50)
     prenom = models.CharField(max_length=50)
     mdp = models.CharField(max_length=50)
-    #assos = models.ForeignKey('Asso')
+    assos = models.ForeignKey('Asso', null=True, blank=True)
 
     def __str__(self):
         return self.prenom
@@ -29,9 +30,9 @@ class Materiel(models.Model):
 
 class Pret(models.Model):
     date_pret = models.DateTimeField(auto_now_add=False, auto_now=True, verbose_name="Date de Pret")
-    #date_retour = models.DateTimeField(default=datetime.date.today(), auto_now=False, verbose_name="Date de Retour")
+    date_retour = models.DateTimeField(default=datetime.now(), auto_now=False, verbose_name="Date de Retour")
     materiel = models.ForeignKey('Materiel')
-    #preteur = models.ForeignKey('Personne')
+    preteur = models.ForeignKey('Personne', null=True, blank=True, related_name='preteur')
     emprunteur = models.ForeignKey('Personne')
 
     def __str__(self):
