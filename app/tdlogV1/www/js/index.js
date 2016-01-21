@@ -36,6 +36,7 @@ $(document).ready(function(){
 $(document).bind('deviceready', function(){
     $(function(){
         $('form').submit(function(){
+            // Ligne indiquant de quel formulaire le json
             var landmarkID = $(this).parent().attr('bloc_page');
             var postData = $(this).serialize();
 
@@ -43,10 +44,13 @@ $(document).bind('deviceready', function(){
                 type: 'POST',
                 data: postData+'&lid='+landmarkID,
                 // Place here the final server url
-                url: 'http://localhost:8000/index.py',
+                url: 'http://localhost:3000/index.py',
                 success: function(data){
                     console.log(data);
                     idCheck();
+                    // Balises pour placer le code d'Aude et Caroline...
+                    // Début
+                    // Fin
                 },
                 error: function(){
                     console.log(data);
