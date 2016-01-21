@@ -1,51 +1,59 @@
-/*
- * Licensed to the Apache Software Foundation (ASF) under one
- * or more contributor license agreements.  See the NOTICE file
- * distributed with this work for additional information
- * regarding copyright ownership.  The ASF licenses this file
- * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
- * with the License.  You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing,
- * software distributed under the License is distributed on an
- * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- * KIND, either express or implied.  See the License for the
- * specific language governing permissions and limitations
- * under the License.
- */
-var app = {
-    // Application Constructor
-    initialize: function() {
-        this.bindEvents();
-    },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
-    bindEvents: function() {
-        document.addEventListener('deviceready', this.onDeviceReady, false);
-    },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicitly call 'app.receivedEvent(...);'
-    onDeviceReady: function() {
-        app.receivedEvent('deviceready');
-    },
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
+// Fonction qui permet de d'envoyer sur une autre page si les ids sont bons
+$(document).ready(function(){
+    function idCheck(){
 
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+        $.ajax({
+            // Place here the final server url
+            url: 'http://localhost:3000/index.py',
+            dataType: 'jsonp',
+            jsonp: 'jsoncallback',
+            timeout: 5000,
+            success: function(data, status){
+                console.log(data);
+                $.each(data, function(i,item){
+                    if (item.connexion == 'OK'){
+                        window.location="connexion.html";
+                    };
+                    if (item.connexion == 'KO'){
+                        alert('Mauvaise combinaison identifiant/mot de passe.');
+                    };
+                    if (item.connexion == 'noID'){
+                        alert('Identifiant non enregistré, veuillez créer un compte.');
+                    };
+                });
+            },
+            error: function(){
+                console.log(data);
+                alert('Pas de connexion au serveur.');
+            }
+        });
     }
-};
+});
 
-app.initialize();
+
+
+// Fonction qui permet d'envoyer les données au serveur
+$(document).bind('deviceready', function(){
+    $(function(){
+        $('form').submit(function(){
+            var landmarkID = $(this).parent().attr('bloc_page');
+            var postData = $(this).serialize();
+
+            $.ajax({
+                type: 'POST',
+                data: postData+'&lid='+landmarkID,
+                // Place here the final server url
+                url: 'http://localhost:8000/index.py',
+                success: function(data){
+                    console.log(data);
+                    idCheck();
+                },
+                error: function(){
+                    console.log(data);
+                    alert('Pas de connexion au serveur.');
+                }
+            });
+            return false;
+        });
+    });
+});

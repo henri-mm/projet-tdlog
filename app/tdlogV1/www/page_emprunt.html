@@ -2,31 +2,39 @@
 
 <html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+	<meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
-        <title>Liste du matériel à emprunter</title>
+	<title>Liste du matériel à emprunter</title>
+	<script src="js/jquery-min_1.12.0.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	function onBodyLoad() {
+		document.addEventListener("deviceready",onDeviceReady,false);
+	}
+	</script>
 
-    </head>
+</head>
 
 
-    <body>
+<body>
 	<h1>Emprunter un objet</h1>
-        <form>
-		<label for="recherche">Rechercher :</label><input type="search"> 
-	<form/>
+	<form>
+		<label for="recherche">Rechercher :</label>
+		<input type="search"> 
+	</form>
 
-	<table>
-		<tr>
-			<th>Asso</th>
-			<th>Objet</th>
-			<th>Disponibilité</th>
-		</tr>
-	</table>
-    </body>
+		<table>
+			<tr>
+				<th>Asso</th>
+				<th>Objet</th>
+				<th>Disponibilité</th>
+			</tr>
+		</table>
+	</body>
 
-</html>
+	</html>
 
