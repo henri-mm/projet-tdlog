@@ -1,0 +1,10 @@
+<h1>{{ materiel.nom }} <span class="small">appartenant au {{ materiel.asso.nom }}</span></h1>
+<p class="infos">Etat: {{ materiel.etat }}</p>
+<div class="contenu">Preteurs potentiels:</div>
+{% for membre in team %}
+    <div class="membres">
+        <h3>{{ membre.nom }} {{ membre.prenom }}</h3>
+    </div>
+{% empty %}
+    <p>Aucun membre.</p>
+{% endfor %}
