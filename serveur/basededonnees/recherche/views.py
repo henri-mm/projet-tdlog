@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import Http404
-from recherche.models import Materiel
+from django.http import Http404, HttpResponse
+from recherche.models import Materiel, Pret, Personne, Asso
 from recherche.forms import MaterielForm
+import json
+import time
 
 # Create your views here.
 
@@ -31,7 +33,25 @@ def materiel1(request):
 
     return render(request, 'recherche/materiel1.html', locals())
 
-def nouveau_materiel(request):
+def retour_materiel(request):
     nom = request.GET['nom']
+    objet = Materiel.objects.get(nom=nom)
 
-    return HttpResponse(json.dumps({'resultat':'success'}), content_type='application/json')
+    return HttpResponse(json.dumps({'resultat':'success', 'nom':objet.nom, 'etat':objet.etat, 'asso':objet.asso.nom}), content_type='application/json')
+
+def nouveau_pret(request):
+    matos = request.GET['matos']
+    emprunteu = request.GET['emprunteur']
+    preteu = request.GET['preteur']
+#    datere = request.GET['dateretour']
+    objet = Materiel.objects.get(nom=matos)
+    emprunteur = Personne.objects.get(prenom=emprunteu)
+    preteur = Personne.objects.get(prenom=preteu)
+#    dateretour = time.strptime(datere, "%d_%b_%y")
+    if objet.etat:
+        objet.etat=False
+        pret = Pret(emprunteur=emprunteur, preteur=preteur, materiel= objet)
+        pret.save()
+        objet.save()
+
+    return HttpResponse(json.dumps({'resultat':'success', 'nom':objet.nom, 'etat':objet.etat, 'asso':objet.asso.nom}), content_type='application/json')

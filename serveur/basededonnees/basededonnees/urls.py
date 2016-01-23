@@ -22,5 +22,6 @@ urlpatterns = [
     url(r'^$', views.accueil),
     url(r'^materiel/(?P<id>\d+)$', views.selection),
     url(r'^materiel1/$', views.materiel1),
-    url(r'^materiel2/$', views.nouveau_materiel),
+    url(r'^materiel2/$', views.retour_materiel),
+    url(r'^pret/$', views.nouveau_pret),
 ]
