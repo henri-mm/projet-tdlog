@@ -11,15 +11,15 @@ $(document).ready(function(){
             success: function(data, status){
                 console.log(data);
                 $.each(data, function(i,item){
-                    if (item.connexion == 'OK'){
+                    if (item.resultat == 'success'){
                         window.location="connexion.html";
-                    };
-                    if (item.connexion == 'KO'){
+                    }
+                    if (item.resultat == 'mauvais mdp'){
                         alert('Mauvaise combinaison identifiant/mot de passe.');
-                    };
-                    if (item.connexion == 'noID'){
+                    }
+                    if (item.resultat == 'noID'){
                         alert('Identifiant non enregistré, veuillez créer un compte.');
-                    };
+                    }
                 });
             },
             error: function(){
@@ -35,22 +35,30 @@ $(document).ready(function(){
 // Fonction qui permet d'envoyer les données au serveur
 $(document).bind('deviceready', function(){
     $(function(){
-        $('form').submit(function(){
+        $('form').submit(function(e){
+            // Empécher l'envoi par défaut
+            e.preventDefault();
+            
             // Ligne indiquant de quel formulaire le json
-            var landmarkID = $(this).parent().attr('bloc_page');
-            var postData = $(this).serialize();
+            //var landmarkID = $(this).parent().attr('bloc_page');
+            var postData = $(this).serializeArray();
 
             $.ajax({
                 type: 'POST',
-                data: postData+'&lid='+landmarkID,
+                dataType: "json",
+                data: postData,//+'&lid='+landmarkID,
                 // Place here the final server url
                 url: 'http://localhost:3000/index.py',
                 success: function(data){
                     console.log(data);
+                    if (page.data == 'connexion'){
                     idCheck();
-                    // Balises pour placer le code d'Aude et Caroline...
-                    // Début
-                    // Fin
+                    }
+                    if (page.data == 'formulaire'){
+                        // Balises pour placer le code d'Aude et Caroline : envoie calendrier
+                        // Début
+                        // Fin
+                    }
                 },
                 error: function(){
                     console.log(data);
