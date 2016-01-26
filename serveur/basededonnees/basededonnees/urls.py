@@ -24,4 +24,6 @@ urlpatterns = [
     url(r'^materiel1/$', views.materiel1),
     url(r'^materiel2/$', views.retour_materiel),
     url(r'^pret/$', views.nouveau_pret),
+    url(r'^ident/$', views.identification1),
+    url(r'^mdp/$', views.nouveau_mdp),
 ]

@@ -55,3 +55,87 @@ def nouveau_pret(request):
         objet.save()
 
     return HttpResponse(json.dumps({'resultat':'success', 'nom':objet.nom, 'etat':objet.etat, 'asso':objet.asso.nom}), content_type='application/json')
+
+def nouveau_mdp(request):
+    preno = request.GET['prenom']
+    no = request.GET['nom']
+    mdp = request.GET['mdp']
+    personne = Personne.objects.get(nom=no, prenom=preno)
+    personne.mdp = mdp
+    personne.save()
+    ident = personne.id
+
+    return HttpResponse(json.dumps({'resultat':'success', 'nom':personne.nom, 'prenom':personne.prenom, 'id':ident}), content_type='application/json')
+
+def identification1(request):
+    nom = request.GET['nom']
+    mdp = request.GET['mdp']
+    personne = Personne.objects.get(nom=nom)
+    try:
+        personne = Personne.objects.get(nom=nom)
+    except (KeyError, Personne.DoesNotExist):
+        return HttpResponse(json.dumps({'resultat':'no_id'}), content_type='application/json')
+
+    if personne.mdp == mdp:
+        return HttpResponse(json.dumps({'resultat':'success', 'nom':personne.nom, 'prenom':personne.prenom, 'id':personne.id}), content_type='application/json')
+
+    else:
+        return HttpResponse(json.dumps({'resultat':'mauvais mdp'}), content_type='application/json')
+
+def identification(received_jason):
+    nom = received_jason['pseudo']
+    mdp = received_jason['motdepasse']
+    personne = Personne.objects.get(nom=nom)
+#    try:
+#        personne = Personne.objects.get(nom=nom)
+#    except (KeyError, Personne.DoesNotExist):
+#        return HttpResponse(json.dumps({'resultat':'no_id'}), content_type='application/json')
+
+    if personne.mdp == mdp:
+        return HttpResponse(json.dumps({'resultat':'success', 'nom':personne.nom, 'prenom':personne.prenom, 'id':personne.id}), content_type='application/json')
+
+    else:
+        return HttpResponse(json.dumps({'resultat':'mauvais mdp'}), content_type='application/json')
+
+def formulaire(received_jason):
+    pseudoemprunteur = received_jason['pseudoemprunteur']
+    assoemprunteur = received_jason['assoemprunteur']
+    pseudopreteur = received_jason['pseudopreteur']
+    assopreteur = received_jason['assopreteur']
+    objet = received_jason['objet']
+    dateretour = received_jason['dateretour']
+    emprunteur = Personne.objects.get(nom=pseudoemprunteur)
+    preteur = Personne.objects.get(nom=pseudopreteur)
+    obj = Materiel.objects.get(nom=objet)
+
+    if obj.asso != assopreteur:
+        return HttpResponse(json.dumps({'resultat':'pas le droit de preter'}), content_type='application/json'
+
+    if obj.etat:
+        objet.etat=False
+        pret = Pret(emprunteur=emprunteur, preteur=preteur, materiel= obj)
+        pret.save()
+        objet.save()
+        return HttpResponse(json.dumps({'resultat':'success', 'nom':objet.nom, 'etat':objet.etat, 'asso':objet.asso.nom}), content_type='application/json')
+
+    else:
+        return HttpResponse(json.dumps({'resultat':'objet non dispo'}), content_type='application/json')
+
+def index(request):
+    received_json_data = json.loads(request.body)
+
+    if received_json_data['page'] == 'connexion':
+        identification(received_json_data)
+    
+    if received_json_data['page'] == 'formulaire':
+        formulaire(received_json_data)
+
+
+
+
+
+
+
+
+
+
