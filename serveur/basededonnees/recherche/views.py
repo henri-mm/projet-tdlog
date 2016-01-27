@@ -130,14 +130,13 @@ def index(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
         received_json_data = json.loads(body_unicode)
-        
-        HttpResponse(json.dumps({ resultat: 'success'}), content_type='application/json')
 
-        #if received_json_data['page'] == 'connexion':
-        #    identification(received_json_data)
+
+        if received_json_data['page'] == 'connexion':
+            identification(received_json_data)
     
-        #if received_json_data['page'] == 'formulaire':
-        #    formulaire(received_json_data)
+        if received_json_data['page'] == 'formulaire':
+            formulaire(received_json_data)
 
 
 
