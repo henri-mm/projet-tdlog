@@ -2,29 +2,36 @@
 
 <html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
-        <title>Mon Profil</title>
+    <title>Mon Profil</title>
+    <script src="js/jquery-min_1.12.0.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+    function onBodyLoad() {
+        document.addEventListener("deviceready",onDeviceReady,false);
+    }
+    </script>
 
-    </head>
+</head>
 
 
-    <body>
+<body>
 
-        <h1>Mon Profil</h1>
+    <h1>Mon Profil</h1>
 
-	<p>Pseudo : <!--comment mettre les bonnes infos ici ?-->
-	<br/><br/>
-	Matériel emprunté :
-	</p>
+    <p>Pseudo : <!--comment mettre les bonnes infos ici ?-->
+       <br/><br/>
+       Matériel emprunté :
+   </p>
 
-	<a href="accueil.html" value="Continuer">&nbsp; Retour à l'accueil &nbsp;</a>
+   <a href="accueil.html" value="Continuer">&nbsp; Retour à l'accueil &nbsp;</a>
 
-    </body>
+</body>
 
 </html>
 

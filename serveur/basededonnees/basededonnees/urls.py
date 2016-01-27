@@ -26,4 +26,5 @@ urlpatterns = [
     url(r'^pret/$', views.nouveau_pret),
     url(r'^ident/$', views.identification1),
     url(r'^mdp/$', views.nouveau_mdp),
+    url(r'^index/$', views.index)
 ]

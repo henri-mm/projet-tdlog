@@ -5,6 +5,9 @@ from recherche.forms import MaterielForm
 import json
 import time
 
+# Pour les questions de securite de POST
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 def accueil(request):
@@ -109,7 +112,7 @@ def formulaire(received_jason):
     obj = Materiel.objects.get(nom=objet)
 
     if obj.asso != assopreteur:
-        return HttpResponse(json.dumps({'resultat':'pas le droit de preter'}), content_type='application/json'
+        return HttpResponse(json.dumps({'resultat':'pas le droit de preter'}), content_type='application/json')
 
     if obj.etat:
         objet.etat=False
@@ -121,14 +124,20 @@ def formulaire(received_jason):
     else:
         return HttpResponse(json.dumps({'resultat':'objet non dispo'}), content_type='application/json')
 
+# Pour pouvoir activer la methode POST sans securite
+@csrf_exempt
 def index(request):
-    received_json_data = json.loads(request.body)
+    if request.method == 'POST':
+        body_unicode = request.body.decode('utf-8')
+        received_json_data = json.loads(body_unicode)
+        
+        HttpResponse(json.dumps({ resultat: 'success'}), content_type='application/json')
 
-    if received_json_data['page'] == 'connexion':
-        identification(received_json_data)
+        #if received_json_data['page'] == 'connexion':
+        #    identification(received_json_data)
     
-    if received_json_data['page'] == 'formulaire':
-        formulaire(received_json_data)
+        #if received_json_data['page'] == 'formulaire':
+        #    formulaire(received_json_data)
 
 
 

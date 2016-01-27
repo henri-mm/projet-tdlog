@@ -2,32 +2,39 @@
 
 <html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
-        <title>Que voulez-vous faire ?</title>
+    <title>Que voulez-vous faire ?</title>
+    <script src="js/jquery-min_1.12.0.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+    function onBodyLoad() {
+        document.addEventListener("deviceready",onDeviceReady,false);
+    }
+    </script>
 
-    </head>
+</head>
 
 
-    <body>
+<body>
 
 	<p><img src="img/logoSIP.png" alt="logo de l'appli" class="logo"/></p>
 
-        <h1>Merci de faire vivre la vie de cette école !</h1>
-	
-
-	<a href="accueil.html" value="Continuer">&nbsp; Emprunter un autre objet &nbsp;</a>
-
-	<br/> <br/>
-
-	<a href="Formulaire.html" value="Quitter">&nbsp; Quitter &nbsp;</a>	<!-- pas le bon href ici, possible de fermer l'appli? -->
+    <h1>Merci de faire vivre la vie de cette école !</h1>
 
 
-    </body>
+    <a href="accueil.html" value="Continuer">&nbsp; Emprunter un autre objet &nbsp;</a>
+
+    <br/> <br/>
+
+    <a onclick="navigator.app.exitApp();" value="Quitter">&nbsp; Quitter &nbsp;</a>
+
+
+</body>
 
 </html>
 

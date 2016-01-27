@@ -8,12 +8,13 @@
 	<link rel="stylesheet" href="css/style.css" />
 	<title>Connexion</title>
 	<script src="js/jquery-min_1.12.0.js"></script>
-	<script src="js/index.js"></script>
-	<script>
+	<!--<script src="js/index.js"></script>-->
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
+	<!--<script>
 	function onBodyLoad() {
 		document.addEventListener("deviceready",onDeviceReady,false);
 	}
-	</script>
+	</script>-->
 </head>
 
 
@@ -26,8 +27,8 @@
 		<h1>Bienvenue sur ShareInPonts !</h1>
 
 
-		<form>
-		    <input type="hidden" name="page" id="page" value="connexion"></input>
+		<form action="http://192.168.1.11:8000/index/" method="post" id="connexion">
+		    <input type="hidden" name="page" id="page" value="connexion"/>
 			<p>
 
 				<label for="pseudo">Pseudo :</label>
@@ -47,6 +48,23 @@
 
 
 	</div>
+	
+	<script>
+	    $("#connexion").submit(function(event){
+	        event.preventDefault();
+	        var $form = $(this),
+	            nom = $form.find("input[name='pseudo']").val(),
+	            mdp =  $form.find("input[name='motdepasse']").val(),
+	            django = $form.attr("action");
+	        var posting = $.post(
+	            url, 
+	            {page : 'connexion', pseudo : nom, motdepasse : mdp}, 
+	            function(){
+	                alert("ok");
+	                window.location = "accueil.html";
+	            }, 'json');
+	     });
+	 </script>
 </body>
 
 </html>

@@ -2,34 +2,41 @@
 
 <html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+    <meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 
-        <title>Accueil</title>
+    <title>Accueil</title>
+    <script src="js/jquery-min_1.12.0.js"></script>
+    <script src="js/index.js"></script>
+    <script>
+    function onBodyLoad() {
+        document.addEventListener("deviceready",onDeviceReady,false);
+    }
+    </script>
 
-    </head>
+</head>
 
 
-    <body>
+<body>
 	<p><img src="img/logoSIP.png" alt="logo de l'appli" class="logo"/></p>
 
 	<h1>Accueil</h1>
 
 	<h2>Faites votre choix :</h2>
 
-       	<a href="Formulaire.html">&nbsp; Prêter &nbsp;</a> 
+    <a href="Formulaire.html">&nbsp; Prêter &nbsp;</a> 
 
-	<br/><br/>
+    <br/><br/>
 
-	<a href="page_emprunt.html"> &nbsp; Emprunter &nbsp; </a> 
+    <a href="page_emprunt.html"> &nbsp; Emprunter &nbsp; </a> 
 
-	<br/><br/>
+    <br/><br/>
 
-	<a href="profil.html"> &nbsp; Voir mon profil &nbsp; </a>
-    </body>
+    <a href="profil.html"> &nbsp; Voir mon profil &nbsp; </a>
+</body>
 
 </html>
 

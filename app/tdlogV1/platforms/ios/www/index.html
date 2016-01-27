@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="fr-FR">
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>Connexion</title>
+	<script src="js/jquery-min_1.12.0.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	function onBodyLoad() {
+		document.addEventListener("deviceready",onDeviceReady,false);
+	}
+	</script>
+</head>
 
-        <link rel="stylesheet" href="css/style.css" />
 
-        <title>Connexion</title>
-
-    </head>
-
-
-    <body>
+<body>
 	<div id="bloc_page">
 
 
-	<p><img src="img/logoSIP.png" alt="logo de l'appli" class="logo"/></p>
+		<p><img src="img/logoSIP.png" alt="logo de l'appli" class="logo"/></p>
 
-        <h1>Bienvenue sur ShareInPonts !</h1>
+		<h1>Bienvenue sur ShareInPonts !</h1>
 
 
-        <form method="post" action="traitement.php"> <!-- remplir le bon nom du fichier-->
-		<p>
-	
-			<label for="pseudo">Pseudo :</label>
-			<input type="text" name="pseudo" id="pseudo" required />
+		<form>
+		    <input type="hidden" name="page" id="page" value="connexion"/>
+			<p>
 
-			<br/>
+				<label for="pseudo">Pseudo :</label>
+				<input type="text" name="pseudo" id="pseudo" required />
 
-			<label for="motdepasse">Mot de passe :</label>
-			<input type="password" name="motdepasse" id="motdepasse" required/>
-			
-		</p>
+				<br/>
 
-		<p>	
-			<input href="accueil.html" type="submit" value="Connexion" class= "bouton" /> <!-- à changer: il faut mettre un critère de vérification avec la base de données -->	
-		</p>
-	</form>
+				<label for="motdepasse">Mot de passe :</label>
+				<input type="password" name="motdepasse" id="motdepasse" required/>
 
-        
+			</p>
+
+			<p>	
+				<input type="submit" value="Connexion" class= "bouton"/>
+			</p>
+		</form>
+
+
 	</div>
-    </body>
+</body>
 
 </html>
 

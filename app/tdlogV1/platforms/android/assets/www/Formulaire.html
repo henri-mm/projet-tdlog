@@ -2,28 +2,37 @@
 
 <html>
 
-    <head>
+<head>
 
-        <meta charset="utf-8" />
+	<meta charset="utf-8" />
 
-        <link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/style.css" />
 
-        <title>Formulaire</title>
+	<title>Formulaire</title>
+	<script src="js/jquery-min_1.12.0.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	function onBodyLoad() {
+		document.addEventListener("deviceready",onDeviceReady,false);
+	}
+	</script>
 
-    </head>
+</head>
 
 
-    <body>
+<body>
 	<!--rappel objet-->
+	<div id="formulaire">
 
-        <form method="post" action="traitement.php"> <!-- remplir le bon nom du fichier-->
+	<form> <!-- remplir le bon nom du fichier-->
 		<h1> Prêter/Emprunter du matériel </h1>
 
 		<h2> Veillez remplir les informations suivantes : </h2>
 
 		<p>
+		    <input type="hidden" name="page" id="page" value="formulaire"></input>
 			<label for="pseudoemprunteur">Pseudo de l'emprunteur:</label> 
-<!-- à préremplir avec les infos remplies à la connexion. Comment faire? A adapter selon si on appuie sur préter ou emprunter. aucune idée comment faire ca pour l'instant -->
+			<!-- à préremplir avec les infos remplies à la connexion. Comment faire? A adapter selon si on appuie sur préter ou emprunter. aucune idée comment faire ca pour l'instant -->
 			<input type="text" name="pseudoemprunteur" id="pseudoemprunteur" />
 			<br />
 			<label for="assoemprunteur">Asso/Club de l'emprunteur:</label> 
@@ -45,18 +54,19 @@
 
 			<br/>
 			<label for="datepret">Date d'emprunt:</label>
-			<input type="date" name="datepret" id="datepret" />
+			<input type="date" name="datepret" id="datepret" value="jj/mm/aaaa" />
 			<br />
 			<label for="dateretour">Date de retour:</label>
-			<input type="date" name="dateretour" id="dateretour" /> <!-- à préremplir avec la date d'emprunt augmentée de 7 jours -->
+			<input type="date" name="dateretour" id="dateretour" value="jj/mm/aaaa"/> 
 		</p>
 
 		<p>
-			<input href="page_fin.html" type="submit" value="Valider" class="bouton" />
+			<input type="submit" value="Valider" class="bouton" />
 		</p>
 	</form>
+	</div>
 
-    </body>
+</body>
 
 </html>
 
