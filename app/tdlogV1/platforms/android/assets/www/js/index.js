@@ -12,7 +12,7 @@ $(document).ready(function(){
                 console.log(data);
                 $.each(data, function(i,item){
                     if (item.resultat == 'success'){
-                        window.location="connexion.html";
+                        window.location="accueil.html";
                     }
                     if (item.resultat == 'mauvais mdp'){
                         alert('Mauvaise combinaison identifiant/mot de passe.');
@@ -68,7 +68,7 @@ $(document).ready(function(){
 // Fonction qui permet d'envoyer les données au serveur
 $(document).bind('deviceready', function(){
     $(function(){
-        $('form').submit(function(e){
+        $('#connexion').submit(function(e){
             // Empécher l'envoi par défaut
             e.preventDefault();
             
@@ -83,33 +83,35 @@ $(document).bind('deviceready', function(){
                 data[input.attr("name")] =  input.val();
                 delete data["undefined"];
             });
+            alert(data);
             
             //alert('envoie des données');
-            //window.location="connexion.html";
-
-            $.ajax({
-                type: 'POST',
-                dataType: "json",
-                data: JSON.stringify(data),//+'&lid='+landmarkID,
-                // Place here the final server url
-                url: 'http://192.168.1.11:8000/index.py',
-                success: function(data){
-                    console.log(data);
-                    if (page.data == 'connexion'){
-                        idCheck();
-                    }
-                    if (page.data == 'formulaire'){
-                        formulaireCheck();
+            //window.location="accueil.html";
+            $.post('http://192.168.1.11:8000/index/', $(this).serialize(), function(data){ idCheck();});
+            //$.ajax({
+            //    type: "POST",
+            //    dataType: "json",
+            //    contentType: "application/json",
+            //    data: JSON.stringify(data),//+'&lid='+landmarkID,
+            //    // Place here the final server url
+            //    url: "http://192.168.1.11:8000/index",
+            //    success: function(data){
+            //        console.log(data);
+            //        if (page.data == 'connexion'){
+            //            idCheck();
+            //        }
+            //        if (page.data == 'formulaire'){
+            //            formulaireCheck();
                         // Balises pour placer le code d'Aude et Caroline : envoie calendrier
                         // Début
                         // Fin
-                    }
-                },
-                error: function(){
-                    console.log(data);
-                    alert('Pas de connexion au serveur.');
-                }
-            });
+            //        }
+            //    },
+            //    error: function(){
+            //        console.log(data);
+            //        alert('Pas de connexion au serveur.');
+            //    }
+            //});
             return false;
         });
     });

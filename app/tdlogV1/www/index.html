@@ -27,7 +27,7 @@
 		<h1>Bienvenue sur ShareInPonts !</h1>
 
 
-		<form action="http://192.168.1.11:8000/index/" method="post" id="connexion">
+		<form action="accueil.html" method="post">
 		    <input type="hidden" name="page" id="page" value="connexion"/>
 			<p>
 
@@ -42,29 +42,31 @@
 			</p>
 
 			<p>	
-				<input type="submit" value="Connexion" class= "bouton"/>
+				<input type="submit" class= "bouton" value="Connexion">
 			</p>
 		</form>
 
 
 	</div>
 	
-	<script>
+	<!--<script>
 	    $("#connexion").submit(function(event){
-	        event.preventDefault();
+	        window.location = "accueil.html";
+	        //event.preventDefault();
 	        var $form = $(this),
 	            nom = $form.find("input[name='pseudo']").val(),
 	            mdp =  $form.find("input[name='motdepasse']").val(),
 	            django = $form.attr("action");
+	        window.location = "accueil.html";
 	        var posting = $.post(
-	            url, 
-	            {page : 'connexion', pseudo : nom, motdepasse : mdp}, 
+	            django, 
+	            {'page' : 'connexion', 'pseudo' : nom, 'motdepasse' : mdp}, 
 	            function(){
 	                alert("ok");
 	                window.location = "accueil.html";
 	            }, 'json');
 	     });
-	 </script>
+	 </script>-->
 </body>
 
 </html>

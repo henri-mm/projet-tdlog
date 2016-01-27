@@ -24,7 +24,7 @@
 	<!--rappel objet-->
 	<div id="formulaire">
 
-	<form> <!-- remplir le bon nom du fichier-->
+	<form action="page_fin.html" method="post"> <!-- remplir le bon nom du fichier-->
 		<h1> Prêter/Emprunter du matériel </h1>
 
 		<h2> Veillez remplir les informations suivantes : </h2>
@@ -36,7 +36,13 @@
 			<input type="text" name="pseudoemprunteur" id="pseudoemprunteur" />
 			<br />
 			<label for="assoemprunteur">Asso/Club de l'emprunteur:</label> 
-			<input type="text" name="assoemprunteur" id="assoemprunteur" />
+			<select name="assoemprunteur" id="assoemprunteur" >
+			    <option value="bde">BDE</option>
+			    <option value="bds">BDS</option>
+			    <option value="pep">PEP</option>
+			    <option value="foyer">Foyer</option>
+			    <option value="bitum">Bitum</option>
+			</select>
 			<br />
 
 			<br/>
@@ -44,20 +50,32 @@
 			<input type="text" name="pseudopreteur" id="pseudopreteur" />
 			<br />
 			<label for="assopreteur">Asso du preteur:</label> 
-			<input type="text" name="assopreteur" id="assopreteur" />
+			<select name="assopreteur" id="assopreteur" />
+			    <option value="bde">BDE</option>
+			    <option value="bds">BDS</option>
+			    <option value="pep">PEP</option>
+			    <option value="foyer">Foyer</option>
+			    <option value="bitum">Bitum</option>
+			</select>
 			<br />
 
 			<br/>
 			<label for="objet">Objet emprunté:</label> <!-- à préremplir avec l'objet sélectionné à la page précédente en cas d'emprunt et laisser libre en cas de prêt. Comment faire? -->
-			<input type="text" name="objet" id="objet" />
+			<select name="objet" id="objet" />
+			    <option value="1">Objet 1</option>
+			    <option value="2">Objet 2</option>
+			    <option value="3">Objet 3</option>
+			    <option value="4">Objet 4</option>
+			    <option value="5">Objet 5</option>
+			</select>
 			<br />
 
 			<br/>
 			<label for="datepret">Date d'emprunt:</label>
-			<input type="date" name="datepret" id="datepret" value="jj/mm/aaaa" />
+			<input type="date" name="datepret" id="datepret" value="27/01/2016"/>
 			<br />
 			<label for="dateretour">Date de retour:</label>
-			<input type="date" name="dateretour" id="dateretour" value="jj/mm/aaaa"/> 
+			<input type="date" name="dateretour" id="dateretour" value="03/02/2016"/> 
 		</p>
 
 		<p>
