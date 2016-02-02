@@ -102,8 +102,13 @@ $(document).bind('deviceready', function(){
             //        }
             //        if (page.data == 'formulaire'){
             //            formulaireCheck();
+
                         // Balises pour placer le code d'Aude et Caroline : envoie calendrier
                         // Début
+			// if (window.plugins.calendar.hasReadWritePermission == false){
+				// window.plugins.calendar.requestReadWritePermission;
+			// }
+			// window.plugins.calendar.createEvent('Rendre objet','Ponts', 'Oublie pas ;)', startDate, endDate, success, error);
                         // Fin
             //        }
             //    },
