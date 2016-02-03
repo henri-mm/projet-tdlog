@@ -7,6 +7,7 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" href="css/style.css" />
 	<title>Connexion</title>
+	<script type="text/javascript" src="js/Calendar.js"></script>
 	<script src="js/jquery-min_1.12.0.js"></script>
 	<!--<script src="js/index.js"></script>-->
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
@@ -27,7 +28,7 @@
 		<h1>Bienvenue sur ShareInPonts !</h1>
 
 
-		<form action="http://192.168.1.11:8000/index/" method="post" id="connexion">
+		<form action="accueil.html" method="post">
 		    <input type="hidden" name="page" id="page" value="connexion"/>
 			<p>
 
@@ -42,29 +43,31 @@
 			</p>
 
 			<p>	
-				<input type="submit" value="Connexion" class= "bouton"/>
+				<input type="submit" class= "bouton" value="Connexion">
 			</p>
 		</form>
 
 
 	</div>
 	
-	<script>
+	<!--<script>
 	    $("#connexion").submit(function(event){
-	        event.preventDefault();
+	        window.location = "accueil.html";
+	        //event.preventDefault();
 	        var $form = $(this),
 	            nom = $form.find("input[name='pseudo']").val(),
 	            mdp =  $form.find("input[name='motdepasse']").val(),
 	            django = $form.attr("action");
+	        window.location = "accueil.html";
 	        var posting = $.post(
-	            url, 
-	            {page : 'connexion', pseudo : nom, motdepasse : mdp}, 
+	            django, 
+	            {'page' : 'connexion', 'pseudo' : nom, 'motdepasse' : mdp}, 
 	            function(){
 	                alert("ok");
 	                window.location = "accueil.html";
 	            }, 'json');
 	     });
-	 </script>
+	 </script>-->
 </body>
 
 </html>

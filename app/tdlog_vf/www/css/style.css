@@ -1,0 +1,41 @@
+body
+{
+	background-image: url("../img/fond_ecran.jpg");
+	text-align: center;
+}
+
+h1
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-size: 40px;
+	color:blue;
+}
+
+h2
+{
+	font-family: Calibri, Arial, sans-serif;
+	font-style: italic;
+}
+
+.bouton, a
+{
+	text-decoration: none;
+	vertical-align:middle;
+	font-size: 16px;
+	color: white;
+	border-radius:12px;
+	background: blue;
+	border-width:0px;
+}
+
+
+input
+{
+	vertical-align:middle;
+}
+
+.logo
+{
+	width: 8em;
+	height: 8em;
+}

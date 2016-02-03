@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="fr-FR">
+
+<head>
+
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="css/style.css" />
+	<title>Connexion</title>
+	<script type="text/javascript" src="js/Calendar.js"></script>
+	<script src="js/jquery-min_1.12.0.js"></script>
+	<script src="js/index.js"></script>
+
+</head>
+
+
+<body>
+	<div id="bloc_page">
+
+
+		<p><img src="img/logoSIP.png" alt="logo de l'appli" class="logo"/></p>
+
+		<h1>Bienvenue sur ShareInPonts !</h1>
+
+
+		<form id="connexion">
+		    <input type="hidden" name="page" id="page" value="connexion"/>
+			<p>
+
+				<label for="pseudo">Pseudo :</label>
+				<input type="text" name="pseudo" id="pseudo" required />
+
+				<br/>
+
+				<label for="motdepasse">Mot de passe :</label>
+				<input type="password" name="motdepasse" id="motdepasse" required/>
+
+			</p>
+
+			<p>
+				<input type="submit" class= "bouton" value="Connexion" name="submit" id="submit">
+			</p>
+		</form>
+
+
+	</div>
+
+	 <script>
+	    $('#connexion').submit(function(e){
+            // Empécher l'envoi par défaut
+            e.preventDefault();
+
+            var data = $.serialize(this);
+
+            $.ajax({
+                type        : "POST",
+                dataType    : "json",
+                crossDomain : true,
+                beforeSend  : function(){$.mobile.showPageLoadingMsg();},
+                complete    : function(){$.mobile.hidePageLoadingMsg();},
+                contentType : "application/json; charset=utf-8",
+                data        : JSON.stringify(data),
+                // Place here the final server url
+                url         : "http://192.168.1.26:8000/index",
+                success     : function(data){
+                    if(data.resultat == 'success'){
+                        window.location = "accueil.html";
+                    }
+                    else{
+                        alert('Mauvaise combinaison identifiant/mot de passe.');
+                    }
+                },
+                error       : function(){
+                    alert('Pas de connexion au serveur.');
+                }
+            });
+            return false;
+        });
+	 </script>
+</body>
+
+</html>

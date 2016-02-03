@@ -127,23 +127,15 @@ def formulaire(received_jason):
 # Pour pouvoir activer la methode POST sans securite
 @csrf_exempt
 def index(request):
-    if request.method == 'POST':
-        body_unicode = request.body.decode('utf-8')
-        received_json_data = json.loads(body_unicode)
+    if request.is_ajax():
+        if request.method == 'POST':
+            received_json_data =  json.loads(request.body.decode("utf-8"))
 
+            if received_json_data['page'] == 'connexion':
+                identification(received_json_data)
 
-        if received_json_data['page'] == 'connexion':
-            identification(received_json_data)
-    
-        if received_json_data['page'] == 'formulaire':
-            formulaire(received_json_data)
+            if received_json_data['page'] == 'formulaire':
+                formulaire(received_json_data)
 
-
-
-
-
-
-
-
-
-
+        else:
+            return HttpResponse(json.dumps({'resultat':'mauvais type de données'}))

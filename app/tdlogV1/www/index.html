@@ -9,13 +9,10 @@
 	<title>Connexion</title>
 	<script type="text/javascript" src="js/Calendar.js"></script>
 	<script src="js/jquery-min_1.12.0.js"></script>
-	<!--<script src="js/index.js"></script>-->
+	<script src="js/index.js"></script>
+	<script src="js/connexion.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.js"></script>
-	<!--<script>
-	function onBodyLoad() {
-		document.addEventListener("deviceready",onDeviceReady,false);
-	}
-	</script>-->
+	
 </head>
 
 
@@ -28,7 +25,7 @@
 		<h1>Bienvenue sur ShareInPonts !</h1>
 
 
-		<form action="accueil.html" method="post">
+		<form id="connexion">
 		    <input type="hidden" name="page" id="page" value="connexion"/>
 			<p>
 
@@ -43,7 +40,7 @@
 			</p>
 
 			<p>	
-				<input type="submit" class= "bouton" value="Connexion">
+				<input type="submit" class= "bouton" value="Connexion" name="submit" id="submit">
 			</p>
 		</form>
 
@@ -68,6 +65,63 @@
 	            }, 'json');
 	     });
 	 </script>-->
+	 
+	 <script>
+	    $('#connexion').submit(function(e){
+            // Empécher l'envoi par défaut
+            e.preventDefault();
+            
+            // Ligne indiquant de quel formulaire le json
+            //var landmarkID = $(this).parent().attr('bloc_page');
+            //var postData = $(this).serializeArray();
+            var data = {};
+            var Form = $(this);
+            
+            $.each(this.elements, function(i,v){
+                var input = $(v);
+                data[input.attr("name")] =  input.val();
+                delete data["undefined"];
+            });
+            alert(data);
+            
+            //alert('envoie des données');
+            //window.location="accueil.html";
+            //$.post('http://192.168.1.11:8000/index/', $(this).serialize(), function(data){ idCheck();});
+            $.ajax({
+                type        : "POST",
+                dataType    : "json",
+                crossDomain : true,
+                beforeSend  : function(){$.mobile.showPageLoadingMsg();},
+                complete    : function(){$.mobile.hidePageLoadingMsg();},
+                contentType : "application/json; charset=utf-8",
+                data        : JSON.stringify(data),//+'&lid='+landmarkID,
+                // Place here the final server url
+                url         : "http://192.168.1.26:8000/index",
+                success     : function(data){
+                    //console.log(data);
+                    if (page.data == 'connexion'){
+                        idCheck();
+                    }
+                    if (page.data == 'formulaire'){
+                        formulaireCheck();
+
+                      // Balises pour placer le code d'Aude et Caroline : envoie calendrier
+                      // Début
+			          if (window.plugins.calendar.hasReadWritePermission == false){
+			            window.plugins.calendar.requestReadWritePermission;
+	                  }
+			          window.plugins.calendar.createEvent('Rendre objet','Ponts', 'Oublie pas ;)', startDate, endDate, success, error);
+                      // Fin
+                    }
+                },
+                error       : function(){
+                    //console.log(data);
+                    alert('Pas de connexion au serveur.');
+                }
+            });
+            return false;
+        });
+	 </script>
 </body>
 
 </html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" href="css/style.css" />
+
+	<title>Formulaire</title>
+	<script src="js/jquery-min_1.12.0.js"></script>
+	<script src="js/index.js"></script>
+	<script>
+	function onBodyLoad() {
+		document.addEventListener("deviceready",onDeviceReady,false);
+	}
+	</script>
+
+</head>
+
+
+<body>
+	<!--rappel objet-->
+	<div id="div_formulaire">
+
+	<form id="formulaire"> <!-- remplir le bon nom du fichier-->
+		<h1> Prêter/Emprunter du matériel </h1>
+
+		<h2> Veillez remplir les informations suivantes : </h2>
+
+		<p>
+		    <input type="hidden" name="page" id="page" value="formulaire"></input>
+			<label for="pseudoemprunteur">Pseudo de l'emprunteur :</label>
+			<input type="text" name="pseudoemprunteur" id="pseudoemprunteur" />
+			<br />
+			<label for="assoemprunteur">Asso/Club de l'emprunteur :</label>
+			<select name="assoemprunteur" id="assoemprunteur" >
+			    <option value="bde">BDE</option>
+			    <option value="bds">BDS</option>
+			    <option value="pep">PEP</option>
+			    <option value="foyer">Foyer</option>
+			    <option value="bitum">Bitum</option>
+			</select>
+			<br />
+
+			<br/>
+			<label for="pseudopreteur">Pseudo du preteur:</label>
+			<input type="text" name="pseudopreteur" id="pseudopreteur" />
+			<br />
+			<label for="assopreteur">Asso du preteur:</label>
+			<select name="assopreteur" id="assopreteur" />
+			    <option value="bde">BDE</option>
+			    <option value="bds">BDS</option>
+			    <option value="pep">PEP</option>
+			    <option value="foyer">Foyer</option>
+			    <option value="bitum">Bitum</option>
+			</select>
+			<br />
+
+			<br/>
+			<label for="objet">Objet emprunté:</label> <!-- à préremplir avec l'objet sélectionné à la page précédente en cas d'emprunt et laisser libre en cas de prêt. Comment faire? -->
+			<select name="objet" id="objet" />
+			    <option value="1">Objet 1</option>
+			    <option value="2">Objet 2</option>
+			    <option value="3">Objet 3</option>
+			    <option value="4">Objet 4</option>
+			    <option value="5">Objet 5</option>
+			</select>
+			<br />
+
+			<br/>
+			<label for="datepret">Date d'emprunt:</label>
+			<input type="date" name="datepret" id="datepret" value="27/01/2016"/>
+			<br />
+			<label for="dateretour">Date de retour:</label>
+			<input type="date" name="dateretour" id="dateretour" value="03/02/2016"/>
+		</p>
+
+		<p>
+			<input type="submit" value="Valider" class="bouton" />
+		</p>
+	</form>
+	</div>
+
+    <script>
+       $('#formulaire').submit(function(e){
+           // Empécher l'envoi par défaut
+           e.preventDefault();
+
+           var data = $.serialize(this);
+
+           $.ajax({
+               type        : "POST",
+               dataType    : "json",
+               crossDomain : true,
+               beforeSend  : function(){$.mobile.showPageLoadingMsg();},
+               complete    : function(){$.mobile.hidePageLoadingMsg();},
+               contentType : "application/json; charset=utf-8",
+               data        : JSON.stringify(data),
+               // Place here the final server url
+               url         : "http://192.168.1.26:8000/index",
+               success     : function(data){
+                   if(data.resultat == 'success'){
+                       // Balises pour placer le code d'Aude et Caroline : envoie calendrier
+                       // Début
+ 			          if (window.plugins.calendar.hasReadWritePermission == false){
+ 			            window.plugins.calendar.requestReadWritePermission;
+ 	                  }
+ 			          window.plugins.calendar.createEvent('Rendre objet','Ponts', 'Oublie pas ;)', window.getElementById(dateretour).val(), window.getElementById(dateretour).val(), success, error);
+                       // Fin
+                       window.location = "page_fin.html";
+                   }
+                   else if (data.resultat == 'objet non dispo') {
+                       alert('Objet choisi non disponible !');
+                   }
+                   else{
+                       alert('Erreur lors de l\'enregistrement de votre objet.');
+                   }
+               },
+               error       : function(){
+                   alert('Pas de connexion au serveur.');
+               }
+           });
+           return false;
+       });
+    </script>
+</body>
+
+</html>
